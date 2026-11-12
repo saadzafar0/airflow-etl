@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.astro/.env
+.astro/test_dag_integrity_exceptions.txt
+logs/
+reports/evidence/*.html
+reports/evidence/*.log
+reports/evidence/*credentials*
+.DS_Store
