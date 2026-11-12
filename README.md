@@ -124,12 +124,13 @@ still one document per currency pair and publication date.
 
 ## Report
 
-Current verification: **30 data tests passed** and a live Frankfurter request
-produced three valid transformed records. Full Astro/MongoDB execution remains
+Current verification: **31 tests passed locally and in GitHub Actions**, including
+parsing the real DAG with Airflow 3.3.2. A live Frankfurter request produced three
+valid transformed records. Full Astro/MongoDB execution remains
 unverified here because Docker registry downloads repeatedly timed out. The PDF
-includes actual output and records this limitation. The GitHub Actions workflow
-is configured to run the real Airflow import test on pushes; its result is not
-assumed to have passed.
+includes actual output and records this limitation. The
+[successful CI run](https://github.com/saadzafar0/airflow-etl/actions/runs/43206246635)
+is available on GitHub.
 
 The submission PDF is `reports/airflow_etl_report.pdf`. Its source screenshots
 and captured runtime evidence are under `reports/evidence/`. The report clearly

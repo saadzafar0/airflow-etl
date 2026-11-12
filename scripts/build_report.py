@@ -124,9 +124,10 @@ def main():
     figure("output_transform", "Figure 8. Actual records mapped to the required six-field schema.", 300)
 
     page("Tests and runtime verification", "08 / validation")
-    paragraph("Data tests cover configuration, missing and duplicate currencies, invalid numeric rates, invalid/future dates, missing XCom payloads, timezone-free timestamps and HTTP failures. The DAG import test uses the real Airflow parser when run inside the Runtime.")
-    figure("output_tests", "Figure 9. Actual test results. A skipped DAG test indicates that the host lacks Airflow; in-runtime results are reported separately below.", 110)
-    figure("output_runtime", "Figure 10. Actual Astro/Airflow runtime verification output.", 460)
+    paragraph("All 31 tests passed locally with Airflow installed and in GitHub Actions. Data tests cover invalid configuration, currencies, rates, dates, timestamps and HTTP failures. The real Airflow parser test verifies imports, exactly three tasks, dependency order, timezone, catchup and concurrency settings.")
+    figure("output_tests", "Figure 9. Actual local pytest output: 31 passed, including the real DAG import test.", 85)
+    figure("output_runtime", "Figure 10. Actual Airflow parser output. This validates DAG structure; full execution and database loading remain unverified.", 430)
+    paragraph("CI evidence: <link href='https://github.com/saadzafar0/airflow-etl/actions/runs/43206246635' color='#087e8b'>successful GitHub Actions run</link>.", "Caption")
 
     page("Database verification status", "09 / database evidence")
     if (EVIDENCE / "mongodb-verification.json").exists():
@@ -134,7 +135,7 @@ def main():
         figure("mongo_express", "Figure 11. Running local Mongo Express showing the exchange_rates collection.", 290)
         figure("output_database", "Figure 12. Actual MongoDB verification output.", 320)
     else:
-        paragraph("MongoDB and Mongo Express are fully configured in the submitted Compose override. Their runtime verification could not finish in this environment because registry connections timed out while downloading images. The Astro Docker build and the standalone dependency installation also failed. No successful database load, idempotency run, Airflow task success or Mongo Express screen is claimed.")
+        paragraph("MongoDB and Mongo Express are fully configured in the submitted Compose override. Runtime verification could not finish because registry connections timed out while downloading images. The initial Astro standalone dependency installation also failed; a separate local Airflow 3.3.2 installation later succeeded and all 31 tests passed. No successful database load, idempotency run, Airflow task success or Mongo Express screen is claimed.")
         figure("output_downloads", "Figure 11. Captured errors from the actual runtime and image-download attempts.", 410)
         paragraph("Remaining local verification", "SectionTitle")
         paragraph("After the images download, run astro dev start --no-proxy --wait 5m. Unpause and trigger currency_exchange_etl, inspect the three successful task states and named XCom values, then open the currency_exchange / exchange_rates collection in Mongo Express. Trigger a second run and confirm one document per currency pair and publication date.")
