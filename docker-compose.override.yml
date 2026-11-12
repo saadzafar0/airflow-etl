@@ -1,0 +1,56 @@
+services:
+  scheduler:
+    networks:
+      - default
+      - currency-db
+
+  mongodb:
+    image: mongo:8.0
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:?Copy .env.example to .env}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?Copy .env.example to .env}
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-config:/data/configdb
+    networks:
+      - currency-db
+    # No host port: MongoDB is accessible only on the local Docker network.
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "quit(db.adminCommand('ping').ok ? 0 : 1)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    labels:
+      io.assignment.networking: "private currency-db network; no published database port"
+      io.assignment.storage: "mongodb-data:/data/db; mongodb-config:/data/configdb"
+
+  mongo-express:
+    image: mongo-express:1.0.2-20
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      ME_CONFIG_MONGODB_URL: ${MONGO_URI:?Copy .env.example to .env}
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
+      ME_CONFIG_BASICAUTH_ENABLED: "true"
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USERNAME:?Copy .env.example to .env}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASSWORD:?Copy .env.example to .env}
+    ports:
+      - "127.0.0.1:8081:8081"
+    networks:
+      - currency-db
+    labels:
+      io.assignment.networking: "localhost-only web interface on port 8081"
+      io.assignment.storage: "stateless administration interface; data stored by MongoDB"
+
+networks:
+  currency-db:
+    driver: bridge
+    internal: true
+
+volumes:
+  mongodb-data:
+  mongodb-config:
