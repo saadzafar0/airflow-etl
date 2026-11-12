@@ -30,7 +30,7 @@ The default currency configuration is EUR to USD, GBP, and JPY.
 git clone https://github.com/saadzafar0/airflow-etl.git
 cd airflow-etl
 cp .env.example .env
-astro dev start
+astro dev start --no-proxy --wait 5m
 ```
 
 Astro automatically merges `docker-compose.override.yml` with its generated
