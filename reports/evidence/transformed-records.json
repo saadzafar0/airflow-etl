@@ -1,0 +1,26 @@
+[
+  {
+    "base_currency": "EUR",
+    "target_currency": "GBP",
+    "exchange_rate": 0.83594,
+    "rate_date": "2026-11-12",
+    "source": "Frankfurter API",
+    "retrieved_at": "2026-11-12T10:32:31+00:00"
+  },
+  {
+    "base_currency": "EUR",
+    "target_currency": "JPY",
+    "exchange_rate": 177.36,
+    "rate_date": "2026-11-12",
+    "source": "Frankfurter API",
+    "retrieved_at": "2026-11-12T10:32:31+00:00"
+  },
+  {
+    "base_currency": "EUR",
+    "target_currency": "USD",
+    "exchange_rate": 1.1147,
+    "rate_date": "2026-11-12",
+    "source": "Frankfurter API",
+    "retrieved_at": "2026-11-12T10:32:31+00:00"
+  }
+]

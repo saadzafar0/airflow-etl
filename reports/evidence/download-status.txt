@@ -1,0 +1,11 @@
+Astro Docker startup
+Error: an error was encountered while building the image, see the build logs for details
+
+Astro standalone startup
+Error: error installing dependencies: exit status 2
+
+Runtime image download
+failed to copy: httpReadSeeker: failed open: failed to do request: Get "https://127.0.0.1:5072/v2/runtime/blobs/sha256:309f9ca3b1901e78aebf30b6386cd76bb5e2263fb0c5fd297bd5174ecdc3d801": net/http: timeout awaiting response headers
+
+MongoDB image download
+failed to copy: read tcp [local IPv6 address redacted]:45382->[registry IPv6 address redacted]:443: read: connection timed out

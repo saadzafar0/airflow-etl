@@ -1,0 +1,9 @@
+7cec33c chore: initialize assignment repository
+9d9b9ab feat: add daily Astro currency ETL and local MongoDB services
+9f73e11 test: cover exchange-rate validation and DAG structure
+68e2301 docs: add setup guide and reproducible PDF report tooling
+7594afb chore: initialize Astro CLI project metadata and local settings
+37ec538 ci: validate ETL contract and real Airflow DAG on pushes
+0fc4a99 docs: document verified results and runtime download limitations
+655a9c9 fix: use the Airflow 3.3 DAG parser interface in validation
+625f9bc docs: record passing local and CI Airflow validation

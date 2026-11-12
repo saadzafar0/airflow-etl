@@ -1,0 +1,23 @@
+{
+  "rates": [
+    {
+      "date": "2026-11-12",
+      "base": "EUR",
+      "quote": "GBP",
+      "rate": 0.83594
+    },
+    {
+      "date": "2026-11-12",
+      "base": "EUR",
+      "quote": "JPY",
+      "rate": 177.36
+    },
+    {
+      "date": "2026-11-12",
+      "base": "EUR",
+      "quote": "USD",
+      "rate": 1.1147
+    }
+  ],
+  "retrieved_at": "2026-11-12T10:32:31+00:00"
+}

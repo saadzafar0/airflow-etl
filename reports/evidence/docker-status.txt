@@ -1,0 +1,11 @@
+$ docker ps --format table {{.Names}}	{{.Status}}	{{.Ports}}
+NAMES     STATUS    PORTS
+Exit code: 0
+
+$ docker network ls --filter label=com.docker.compose.project=airflow-etl_070678
+NETWORK ID   NAME      DRIVER    SCOPE
+Exit code: 0
+
+$ docker volume ls --filter label=com.docker.compose.project=airflow-etl_070678
+DRIVER    VOLUME NAME
+Exit code: 0
