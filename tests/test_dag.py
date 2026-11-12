@@ -10,7 +10,7 @@ from airflow.models import DagBag
 def test_dag_imports_and_has_exactly_three_sequential_tasks():
     bag = DagBag(dag_folder="dags", include_examples=False)
     assert not bag.import_errors, bag.import_errors
-    dag = bag.get_dag("currency_exchange_etl")
+    dag = bag.dags.get("currency_exchange_etl")
     assert dag is not None
     assert set(dag.task_ids) == {
         "extract_currency_exchange_rates", "transform_exchange_rate_data", "load_data_into_mongodb",
