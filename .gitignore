@@ -9,6 +9,7 @@ __pycache__/
 .astro/config.yaml.lock
 .astro/test_dag_integrity_default.py
 .astro/dag_integrity_exceptions.txt
+.astro/standalone/
 logs/
 reports/evidence/*.html
 reports/evidence/*.log

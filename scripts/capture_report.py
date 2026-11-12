@@ -44,11 +44,11 @@ def main():
     profile.mkdir(exist_ok=True)
     (profile / "user.js").write_text('user_pref("network.proxy.type", 0);\n')
     specs = [
-        ("code_dag_tasks", "dags/currency_exchange_etl.py", 17, 58, PythonLexer()),
-        ("code_dag_schedule", "dags/currency_exchange_etl.py", 60, 110, PythonLexer()),
-        ("code_extract", "include/currency_etl.py", 1, 48, PythonLexer()),
-        ("code_transform", "include/currency_etl.py", 49, 95, PythonLexer()),
-        ("code_load", "include/currency_etl.py", 98, 145, PythonLexer()),
+        ("code_dag_tasks", "dags/currency_exchange_etl.py", 17, 48, PythonLexer()),
+        ("code_dag_schedule", "dags/currency_exchange_etl.py", 51, 79, PythonLexer()),
+        ("code_extract", "include/currency_etl.py", 1, 44, PythonLexer()),
+        ("code_transform", "include/currency_etl.py", 45, 82, PythonLexer()),
+        ("code_load", "include/currency_etl.py", 85, 108, PythonLexer()),
         ("code_docker", "docker-compose.override.yml", 1, 75, YamlLexer()),
     ]
     for name, source, first, last, lexer in specs:

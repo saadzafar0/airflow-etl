@@ -120,8 +120,8 @@ def main():
     if raw_path.exists():
         raw = json.loads(raw_path.read_text())
         paragraph(f"The live request returned {len(raw['rates'])} rows. Retrieval timestamp: {raw['retrieved_at']}. The figures below contain actual saved API and transformation output, rather than the sample values in the assignment.")
-    figure("output_api", "Figure 7. Live Frankfurter response and extraction timestamp.", 265)
-    figure("output_transform", "Figure 8. Actual records mapped to the required six-field schema.", 340)
+    figure("output_api", "Figure 7. Live Frankfurter response and extraction timestamp.", 220)
+    figure("output_transform", "Figure 8. Actual records mapped to the required six-field schema.", 300)
 
     page("Tests and runtime verification", "08 / validation")
     paragraph("Data tests cover configuration, missing and duplicate currencies, invalid numeric rates, invalid/future dates, missing XCom payloads, timezone-free timestamps and HTTP failures. The DAG import test uses the real Airflow parser when run inside the Runtime.")
