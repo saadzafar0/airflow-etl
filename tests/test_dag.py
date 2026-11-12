@@ -8,7 +8,7 @@ from airflow.models import DagBag
 
 
 def test_dag_imports_and_has_exactly_three_sequential_tasks():
-    bag = DagBag(dag_folder="dags", include_examples=False)
+    bag = DagBag(dag_folder="dags")
     assert not bag.import_errors, bag.import_errors
     dag = bag.dags.get("currency_exchange_etl")
     assert dag is not None
