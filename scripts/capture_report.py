@@ -36,6 +36,7 @@ def capture(firefox, profile, name, title, content, height):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--firefox", default=shutil.which("firefox"))
+    parser.add_argument("--outputs-only", action="store_true")
     args = parser.parse_args()
     if not args.firefox:
         parser.error("Provide --firefox /path/to/firefox")
@@ -51,7 +52,7 @@ def main():
         ("code_load", "include/currency_etl.py", 85, 108, PythonLexer()),
         ("code_docker", "docker-compose.override.yml", 1, 75, YamlLexer()),
     ]
-    for name, source, first, last, lexer in specs:
+    for name, source, first, last, lexer in ([] if args.outputs_only else specs):
         lines = (ROOT / source).read_text().splitlines()[first - 1:last]
         numbered = "\n".join(f"{number:3}  {line}" for number, line in enumerate(lines, first))
         content = highlight(numbered, lexer, HtmlFormatter(style="friendly"))
@@ -64,6 +65,7 @@ def main():
         ("output_database", "mongodb-verification.json", "Actual persisted MongoDB records and unique index"),
         ("output_docker", "docker-status.txt", "Actual local Docker services, network and volumes"),
         ("output_git", "git-history.txt", "Actual incremental Git commit history"),
+        ("output_downloads", "download-status.txt", "Actual local runtime download failures"),
     ]:
         path = EVIDENCE / filename
         if path.exists():
